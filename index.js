@@ -105,9 +105,13 @@ Use the higher order function `getAverageGoals` to do the following:
  
 */
 
-function getAverageGoals(/* code here */) {
-    /* code here */
+function getAverageGoals(getFinalsCB) {
+    const avgHomeTeamGoals = getFinalsCB.reduce((total, item) => {
+        return total += item['Home Team Goals'] + item['Away Team Goals'];
+    }, 0);
+    return (avgHomeTeamGoals / getFinalsCB.length).toFixed(2); // .length property is used to determine the total number of matches played in the FIFA finals.
  }
+ console.log('Task 6:', getAverageGoals(fifaData));
 
 
 
